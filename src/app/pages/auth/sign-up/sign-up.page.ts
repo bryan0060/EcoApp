@@ -25,7 +25,7 @@ export class SignUpPage implements OnInit {
 
   ngOnInit() {
   }
-
+  //Boton de registrarse
   async submit() {
     if(this.form.valid){
       const loading = await this.utilsService.loading();
@@ -67,6 +67,7 @@ export class SignUpPage implements OnInit {
 
       this.firebaseService.setDocument(path, this.form.value)
         .then(async resp => {
+          this.utilsService.saveLocalStorage('user', this.form.value)
           this.utilsService.routerlink('main/home');
           this.form.reset();
           
