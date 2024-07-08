@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-main',
@@ -10,6 +11,7 @@ export class MainPage implements OnInit {
 
 
   router = inject(Router);
+  firebaseService =  inject(FirebaseService)
   currentPath: string = "";
 
   pages = [
@@ -22,6 +24,11 @@ export class MainPage implements OnInit {
     this.router.events.subscribe((event: any)=>{
       if(event?.url) this.currentPath = event.url
     })
+
+  }
+
+  signOut(){
+    this.firebaseService.signOut()
 
   }
 
