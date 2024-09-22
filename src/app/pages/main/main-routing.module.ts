@@ -17,7 +17,11 @@ const routes: Routes = [
         loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
       }
     ]
+  },  {
+    path: 'explore',
+    loadChildren: () => import('./explore/explore.module').then( m => m.ExplorePageModule)
   },
+
   
 ];
 
