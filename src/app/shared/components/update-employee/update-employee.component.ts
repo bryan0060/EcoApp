@@ -9,6 +9,8 @@ import { UtilsService } from 'src/app/services/utils.service';
   styleUrls: ['./update-employee.component.scss'],
 })
 export class UpdateEmployeeComponent  implements OnInit {
+
+  
   firebaseService = inject(FirebaseService)
   utilsService = inject(UtilsService)
 
@@ -25,18 +27,11 @@ export class UpdateEmployeeComponent  implements OnInit {
 
   ngOnInit() {
     this.user = this.utilsService.getLocalStorage('user');
+    console.log('Usuario cargado:', this.user);
   }
 
   async submit(){
     this.createEmployee();
-      const loading = await this.utilsService.loading();
-
-      await loading.present();
-
-      
-
-  
-    
   }
 
   async createEmployee(){
@@ -55,13 +50,11 @@ export class UpdateEmployeeComponent  implements OnInit {
       this.utilsService.presentToast({
             message: `Ruta creada exitosamente`,
             duration: 1500,
-            color: 'danger',
+            color: 'primary',
             position: 'bottom',
             icon: 'checkmark-circle-outline'
           })
-          
          }).catch(error => {
-          console.log(error);
           this.utilsService.presentToast({
             message: error.message,
             duration: 2500,
@@ -70,8 +63,7 @@ export class UpdateEmployeeComponent  implements OnInit {
             icon: 'alert-circle-outline'
           })
 
-        })
-        .finally(() => {
+        }).finally(() => {
           loading.dismiss();
     })
   }
