@@ -6,7 +6,7 @@
       <ion-icon class="empty-icon" name="person-circle-outline"></ion-icon>
     </ion-avatar>
 
-    <h4>Bryan Arias</h4>
+    <h4>{{ user()?.name }}</h4>
 
     <ion-menu-toggle autoHide="false" *ngFor="let p of pages">
       <!--Al final del ion item, lo de detail es para colocar una flecha a la derecha de Inicio y de Perfil-->
