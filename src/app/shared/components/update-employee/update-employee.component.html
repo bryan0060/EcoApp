@@ -2,5 +2,51 @@
 
 
 <ion-content>
-  Hola
+  
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="ion-padding ion-text-center" (keypress.enter)="submit()">
+
+
+      <app-login-input autocomplete="destination" 
+      type="text" 
+      label="Destino" 
+      [control]="form.controls.destination"
+      ></app-login-input>
+
+      <div class="validators" *ngIf="form.controls.destination.errors && form.controls.destination.touched">
+        <div *ngIf="form.controls.destination.errors?.['required']">El destino es requerido</div>
+        <div *ngIf="form.controls.destination.errors?.['minLength']">El nombre del destino debe dener minimo 3 caracteres</div>
+      </div>
+
+      <app-login-input autocomplete="presupuesto" 
+      type="number" 
+      label="Presupuesto aproximado" 
+      [control]="form.controls.presupuesto"
+      ></app-login-input>
+
+      <div class="validators" *ngIf="form.controls.presupuesto.errors && form.controls.presupuesto.touched">
+        <div *ngIf="form.controls.presupuesto.errors?.['required']">El presupuesto es requerido</div>
+        <div *ngIf="form.controls.presupuesto.errors?.['min']">El presupuesto minimo es 0</div>
+      </div>
+
+      <app-login-input autocomplete="fecha" 
+      type="text" 
+      label="Fecha del viaje" 
+      [control]="form.controls.fecha"
+      ></app-login-input>
+
+      <div class="validators" *ngIf="form.controls.fecha.errors && form.controls.fecha.touched">
+        <div *ngIf="form.controls.fecha.errors?.['required']">La fecha del viaje es requerida</div>
+      </div>
+
+
+
+      <ion-button class="submit" type="submit" mode="ios" [disabled]="form.invalid" >
+        Agregar ruta
+        <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
+      </ion-button>
+
+
+    </form>
+
 </ion-content>

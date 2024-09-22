@@ -1,8 +1,8 @@
 export interface Employees {
     id : string,
-    salario: number,
+    presupuesto: number,
     name: string,
-    plantel: string,
-    cargo: string,
+    destination: string,
+    fecha: string,
     img: string
 }
