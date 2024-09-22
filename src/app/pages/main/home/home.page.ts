@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, inject, OnInit } from '@angular/core';
+import { Employees } from 'src/app/models/employees.model';
+import { UtilsService } from 'src/app/services/utils.service';
+import { UpdateEmployeeComponent } from 'src/app/shared/components/update-employee/update-employee.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  utilsService = inject(UtilsService)
 
   ngOnInit() {
+  }
+
+
+  async addUpdateEmployee(employee?:Employees){
+    let modal = await this.utilsService.getModal({
+      component: UpdateEmployeeComponent,
+      cssClass: 'add-update-modal',
+      componentProps: {employee}
+    })
   }
 
 }
