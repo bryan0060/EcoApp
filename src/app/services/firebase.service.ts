@@ -3,7 +3,7 @@ import { AngularFireAuth} from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, sendPasswordResetEmail} from 'firebase/auth';
 import { User } from '../models/user.model';
-import { doc, getDoc, getFirestore, setDoc } from '@angular/fire/firestore';
+import { addDoc, collection, doc, getDoc, getFirestore, setDoc } from '@angular/fire/firestore';
 import { UtilsService } from './utils.service';
 
 @Injectable({
@@ -46,5 +46,9 @@ export class FirebaseService {
     getAuth().signOut();
     localStorage.removeItem('user');
     this.utilsService.routerlink('/auth');
+  }
+
+  addDocument(path: any, data: any){// 'users/id/empleados'
+    return addDoc(collection(getFirestore(), path), data) // add guarda los datos
   }
 }
