@@ -4,7 +4,7 @@
 <ion-content>
   <div class="d-flex-center">
 
-    <form [formGroup]="form" (ngSubmit)="submit()" class="auth-form" (keypress.enter)="submit()">
+    <form [formGroup]="form" (ngSubmit)="submit()" class="auth-form" (keypress.enter)="submit()" *ngFor="let p of pagina">
 
       <app-logo></app-logo>
 

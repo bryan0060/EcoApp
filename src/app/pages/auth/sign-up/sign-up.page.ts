@@ -23,6 +23,9 @@ export class SignUpPage implements OnInit {
 
   })
   
+  pagina = [
+    {title: "Registrarse"}
+  ]
 
   ngOnInit() {
   }
