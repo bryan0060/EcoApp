@@ -3,7 +3,7 @@
   <ion-menu-toggle autoHide="false" *ngFor="let m of main">
     <!--Al final del ion item, lo de detail es para colocar una flecha a la derecha de Inicio y de Perfil-->
     <ion-item [ngClass]="{'active': currentPath === m.url}" [routerLink]="m.url" routerDirection="root" detail>
-      <ion-icon slot="start" [name]="m.icon"></ion-icon>
+      <ion-icon slot="start" class="lupa" [name]="m.icon"></ion-icon>
       <ion-label>{{ m.title}}</ion-label>
     </ion-item>
   </ion-menu-toggle>

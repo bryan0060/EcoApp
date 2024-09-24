@@ -27,6 +27,8 @@ export class AuthPage implements OnInit {
   ngOnInit() {
   }
 
+  
+
   async submit(){
     if(this.form.valid){
       const loading = await this.utilsService.loading();
